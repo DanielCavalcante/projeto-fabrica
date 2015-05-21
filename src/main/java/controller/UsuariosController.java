@@ -36,4 +36,21 @@ public class UsuariosController {
 		result.redirectTo(this).listar();
 	}
 	
+	@Path("/editar/{id}")
+	public void editar(Long id) {
+		Usuario u = null;
+		if (id != null) {
+			u = repository.find(id);
+			result.include("usuario", u);
+		}
+	}
+	
+	@Get("/remover/{id}")
+	public void remover(Long id) {
+		if (id != null) {
+			repository.delete(id);
+		}
+		result.redirectTo(this).listar();
+	}
+	
 }
