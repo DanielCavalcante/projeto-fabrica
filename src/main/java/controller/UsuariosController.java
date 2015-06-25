@@ -27,6 +27,7 @@ public class UsuariosController {
 	@Get("")
 	public List<Usuario> listar() {
 		List<Usuario> list = (List<Usuario>) repository.list();
+		result.include("usuarios", list);
 		return list;
 	}
 	
